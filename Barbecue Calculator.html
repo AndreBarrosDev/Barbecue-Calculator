@@ -1,0 +1,127 @@
+<!DOCTYPE HTML>
+<html lang = "pt-br">
+<head>
+	<meta charset = "UTF-8">
+	<title> MAPA </title>
+    <style>
+        
+        body {
+            background-color: silver;
+            background-image: linear-gradient(335deg, #b00 23px, transparent 23px),
+            linear-gradient(155deg, #d00 23px, transparent 23px),
+            linear-gradient(335deg, #b00 23px, transparent 23px),
+            linear-gradient(155deg, #d00 23px, transparent 23px);
+            background-size: 58px 58px;
+            background-position:0px 2px, 4px 35px, 29px 31px, 34px 6px;
+        }
+        .background {
+            background-color: silver;
+            width: 44%;
+            height: 100%;
+            position: absolute;
+            z-index: -1; 
+            margin-left: -10px; 
+            top: 0;
+            
+        }
+       
+        h1 {
+            font-size:400%;
+            color:rgb(173, 42, 42);
+            font-family:georgia;
+            margin-left: 15px;
+            
+        }
+        
+        h2 {
+            font-size:250%;
+            color:rgb(173, 42, 42);
+            font-family:georgia;
+            margin-left: 15px;
+           
+        }
+        p {
+            font-size: 122%;
+            color:rgb(173, 42, 42);
+            margin-left: 20px;
+
+        }
+        label {
+            font-size: 130%;
+            color:rgb(173, 42, 42);
+        }
+        .form-group {
+            margin-bottom: 15px;
+            margin-left: 20px;
+        }
+        button {
+            display: block;
+            width: 10%;
+            padding: 10px;
+            background-color: rgb(173, 42, 42);
+            color: white;
+            border: none;
+            border-radius: 7px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-left: 15px;
+        }
+
+        button:hover {
+            background-color: rgb(150, 35, 35);
+        }
+    </style>
+    <script>
+        function calcularChurrasco() {
+            const homens = parseInt(document.getElementById('homens').value) || 0;
+            const mulheres = parseInt(document.getElementById('mulheres').value) || 0;
+            const criancas = parseInt(document.getElementById('criancas').value) || 0;
+            
+            const carne = (homens * 400) + (mulheres * 300) + (criancas * 200);
+            const frango = (homens * 100) + (mulheres * 100) + (criancas * 50);
+            const linguica = (homens * 200) + (mulheres * 100) + (criancas * 50);
+            const refrigerante = (homens * 300) + (mulheres * 300) + (criancas * 200);
+            const cerveja = (homens * 1000) + (mulheres * 500);
+
+            const carneKg = (carne / 1000).toFixed(1);
+            const frangoKg = (frango / 1000).toFixed(1);
+            const linguicaKg = (linguica / 1000).toFixed(1);
+            const refrigeranteL = (refrigerante / 1000).toFixed(1);
+            const cervejaL = (cerveja / 1000).toFixed(1);
+
+            
+            document.getElementById('resultado').innerHTML = `
+                ${carneKg}kg of steak<br>
+                ${frangoKg}kg of chicken<br>
+                ${linguicaKg}kg of sausages<br>
+                ${refrigeranteL}l of soda<br>
+                ${cervejaL}l of beer
+            `;
+        }
+    </script>
+</head>
+<body>
+    <div class="background"></div>
+    <h1></h1>
+    <h2>Barbecue Calculator</h2>
+    <form>
+        <div class="form-group">
+            <label for="homens">Men:</label>
+            <input type="number" id="homens" min="0">
+        </div>
+        <div class="form-group">
+            <label for="mulheres">Women:</label>
+            <input type="number" id="mulheres" min="0">
+        </div>
+        <div class="form-group">
+            <label for="criancas">Children:</label>
+            <input type="number" id="criancas" min="0">
+        </div>
+        <br>
+        <br>
+        <button type="button" onclick="calcularChurrasco()">Calculate</button>
+        <br>
+    </form>
+    <p id="resultado" class="mt-4"></p>
+</body>
+</html>	
